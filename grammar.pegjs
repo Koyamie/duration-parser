@@ -19,13 +19,13 @@ timechunk
   = num:number sep* mult:multiplier { return num * mult; }
 
 multiplier
-  = milliseconds
+  = months
+  / weeks
+  / milliseconds
   / seconds
   / minutes
   / hours
   / days
-  / weeks
-  / months
   / years
 
 milliseconds
@@ -47,7 +47,7 @@ weeks
   = ('weeks'i / 'week'i / 'wks'i / 'wk'i / 'w'i / 'semaines'i / 'semaine'i / 'sem'i / 'smn'i) { return 604800000; }
 
 months
-  = ('months'i / 'month'i / 'mois'i / 'mns'i / 'mn'i) { return 2629800000; }
+  = ('months'i / 'month'i / 'mos'i / 'mois'i) { return 2629800000; }
 
 years
   = ('years'i / 'year'i / 'yrs'i / 'yr'i / 'y'i / 'ans'i / 'an'i) { return 31557600000; }
