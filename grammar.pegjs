@@ -25,24 +25,32 @@ multiplier
   / hours
   / days
   / weeks
+  / months
+  / years
 
 milliseconds
-  = ('ms'i / 'milliseconds'i / 'millisecond'i) { return 1; }
+  = ('ms'i / 'milliseconds'i / 'millisecond'i / 'millisecondes'i) { return 1; }
 
 seconds
-  = ('seconds'i / 'second'i / 'secs'i / 'sec'i / 's'i) { return 1000; }
+  = ('seconds'i / 'second'i / 'secs'i / 'sec'i / 's'i / 'secondes'i) { return 1000; }
 
 minutes
   = ('minutes'i / 'minute'i / 'mins'i / 'min'i / 'm'i) { return 60000; }
 
 hours
-  = ('hours'i / 'hour'i / 'hrs'i / 'hr'i / 'h'i) { return 3600000; }
+  = ('hours'i / 'hour'i / 'hrs'i / 'hr'i / 'h'i / 'heures'i / 'heure'i) { return 3600000; }
 
 days
-  = ('days'i / 'day'i / 'd'i) { return 86400000; }
+  = ('days'i / 'day'i / 'd'i / 'jours'i / 'jour'i / 'j'i) { return 86400000; }
 
 weeks
-  = ('weeks'i / 'week'i / 'wks'i / 'wk'i / 'w'i) { return 604800000; }
+  = ('weeks'i / 'week'i / 'wks'i / 'wk'i / 'w'i / 'semaines'i / 'semaine'i / 'sem'i / 'smn'i) { return 604800000; }
+
+months
+  = ('months'i / 'month'i / 'mois'i / 'mns'i / 'mn'i) { return 2629800000; }
+
+years
+  = ('years'i / 'year'i / 'yrs'i / 'yr'i / 'y'i / 'ans'i / 'an'i) { return 31557600000; }
 
 sep
   = [' '\t]
