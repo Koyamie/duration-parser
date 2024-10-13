@@ -29,28 +29,28 @@ multiplier
   / years
 
 milliseconds
-  = ('ms'i / 'milliseconds'i / 'millisecond'i / 'millisecondes'i) { return 1; }
+  = ('ms'i / 'milliseconds'i / 'millisecond'i / 'milisegundos'i / 'milisegundo'i) { return 1; }
 
 seconds
-  = ('seconds'i / 'second'i / 'secs'i / 'sec'i / 's'i / 'secondes'i) { return 1000; }
+  = ('seconds'i / 'second'i / 'secs'i / 'sec'i / 's'i / 'segundos'i / 'segundo'i) { return 1000; }
 
 minutes
-  = ('minutes'i / 'minute'i / 'mins'i / 'min'i / 'm'i) { return 60000; }
+  = ('minutes'i / 'minute'i / 'mins'i / 'min'i / 'm'i / 'minutos'i / 'minuto'i) { return 60000; }
 
 hours
-  = ('hours'i / 'hour'i / 'hrs'i / 'hr'i / 'h'i / 'heures'i / 'heure'i) { return 3600000; }
+  = ('hours'i / 'hour'i / 'hrs'i / 'hr'i / 'h'i / 'heures'i / 'heure'i / 'horas'i / 'hora'i) { return 3600000; }
 
 days
-  = ('days'i / 'day'i / 'd'i / 'jours'i / 'jour'i / 'j'i) { return 86400000; }
+  = ('days'i / 'day'i / 'd'i / 'jours'i / 'jour'i / 'j'i / 'días'i / 'día'i) { return 86400000; }
 
 weeks
-  = ('weeks'i / 'week'i / 'wks'i / 'wk'i / 'w'i / 'semaines'i / 'semaine'i / 'sem'i / 'smn'i) { return 604800000; }
+  = ('weeks'i / 'week'i / 'wks'i / 'wk'i / 'w'i / 'semaines'i / 'semaine'i / 'semanas'i / 'semana'i / 'sem'i / 'smn'i) { return 604800000; }
 
 months
-  = ('months'i / 'month'i / 'mos'i / 'mois'i) { return 2629800000; }
+  = ('months'i / 'month'i / 'mos'i / 'mois'i / 'meses'i / 'mes'i) { return 2629800000; }
 
 years
-  = ('years'i / 'year'i / 'yrs'i / 'yr'i / 'y'i / 'ans'i / 'an'i) { return 31557600000; }
+  = ('years'i / 'year'i / 'yrs'i / 'yr'i / 'y'i / 'ans'i / 'an'i / 'años'i / 'año'i) { return 31557600000; }
 
 sep
   = [' '\t]
