@@ -1,12 +1,15 @@
 {
   "name": "duration-parser",
-  "version": "1.0.2",
-  "description": "parse time durations written in plain english",
+  "version": "2.0.0",
+  "description": "parse time durations written in plain english and french",
   "main": "index.js",
+  "type": "module",
+  "types": "index.d.ts",
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "preversion": "npm test",
-    "version": "node build.js && git add index.js"
+    "version": "node build.js && git add index.js",
+    "build": "node build.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +26,6 @@
   ],
   "devDependencies": {
     "mocha": "^2.2.5",
-    "pegjs": "^0.8.0"
+    "peggy": "^4.2.0"
   }
 }

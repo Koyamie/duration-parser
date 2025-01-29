@@ -1,17 +1,23 @@
-var fs = require('fs');
-var peg = require('pegjs');
-var pkg = require('./package.json');
+import { readFileSync, writeFileSync } from 'node:fs';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-var grammar = fs.readFileSync(__dirname + '/grammar.pegjs', 'utf-8');
+import peggy from 'peggy';
 
-var parserSource = peg.buildParser(grammar, {output:'source'});
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
-fs.writeFileSync(__dirname + '/index.js',
+const pkg = JSON.parse(readFileSync(__dirname + '/package.json', 'utf-8'));
+
+const grammar = readFileSync(__dirname + '/grammar.pegjs', 'utf-8');
+
+const parser = peggy.generate(grammar, {output: 'source'});
+
+writeFileSync(__dirname + '/index.js',
   '// duration-parser ' + pkg.version + '\n' +
   '// ' + pkg.homepage + '\n\n' +
-  'var parser = ' + parserSource + ';\n\n' +
+  'const parser = ' + parser + ';\n\n' +
   'parser.parse.SyntaxError = parser.SyntaxError;\n' +
-  'module.exports = parser.parse.bind(parser);\n'
+  'export const durationParser = parser.parse.bind(parser);\n'
   ,
   'utf-8'
 );
