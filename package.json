@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/jamestalmage/duration-parser",
   "files": [
-    "index.js"
+    "index.js",
+    "index.d.ts"
   ],
   "devDependencies": {
     "mocha": "^2.2.5",
