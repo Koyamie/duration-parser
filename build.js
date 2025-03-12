@@ -1,25 +1,30 @@
-import { readFileSync, writeFileSync } from 'node:fs';
-import { dirname } from 'node:path';
-import { fileURLToPath } from 'node:url';
+import fs from 'fs';
 
-import peggy from 'peggy';
+// Ensure dist directory exists
+if (!fs.existsSync('dist')) {
+    fs.mkdirSync('dist');
+}
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+// Read the ESM version
+const esmCode = fs.readFileSync('index.js', 'utf8');
 
-const pkg = JSON.parse(readFileSync(__dirname + '/package.json', 'utf-8'));
+// Write ESM version to dist
+fs.writeFileSync('dist/index.js', esmCode);
 
-const grammar = readFileSync(__dirname + '/grammar.pegjs', 'utf-8');
+// Create CommonJS version
+const cjsCode = `// duration-parser CommonJS version
+const parser = ${esmCode.split('const parser =')[1].split('export const')[0]}
 
-const parser = peggy.generate(grammar, {output: 'source'});
+parser.parse.SyntaxError = parser.SyntaxError;
+const durationParser = parser.parse.bind(parser);
+const parseDuration = durationParser;
 
-writeFileSync(__dirname + '/index.js',
-  '// duration-parser ' + pkg.version + '\n' +
-  '// ' + pkg.homepage + '\n\n' +
-  'const parser = ' + parser + ';\n\n' +
-  'parser.parse.SyntaxError = parser.SyntaxError;\n' +
-  'export const durationParser = parser.parse.bind(parser);\n'
-  ,
-  'utf-8'
-);
+module.exports = {
+    durationParser,
+    parseDuration
+};`;
 
-console.log('built version: ' + pkg.version);
+// Write CommonJS version
+fs.writeFileSync('dist/index.cjs', cjsCode);
+
+console.log('Built ESM and CommonJS versions successfully!');

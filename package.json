@@ -1,14 +1,21 @@
 {
   "name": "duration-parser",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "parse time durations written in plain english and french",
-  "main": "index.js",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
   "type": "module",
   "types": "index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./index.d.ts"
+    }
+  },
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha",
     "preversion": "npm test",
-    "version": "node build.js && git add index.js",
     "build": "node build.js"
   },
   "repository": {
@@ -22,7 +29,7 @@
   },
   "homepage": "https://github.com/jamestalmage/duration-parser",
   "files": [
-    "index.js",
+    "dist",
     "index.d.ts"
   ],
   "devDependencies": {
