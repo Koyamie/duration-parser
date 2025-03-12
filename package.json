@@ -1,6 +1,6 @@
 {
   "name": "duration-parser",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "parse time durations written in plain english and french",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",

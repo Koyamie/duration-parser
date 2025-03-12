@@ -1675,7 +1675,5 @@ parser.parse.SyntaxError = parser.SyntaxError;
 const durationParser = parser.parse.bind(parser);
 const parseDuration = durationParser;
 
-module.exports = {
-    durationParser,
-    parseDuration
-};
+module.exports = { durationParser, parseDuration };
+module.exports.default = { durationParser, parseDuration };
